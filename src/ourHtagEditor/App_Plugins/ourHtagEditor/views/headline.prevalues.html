@@ -20,6 +20,16 @@
             </div>
         </div>
 
+        <div class="toolbar-wrapper">
+            <span>&nbsp;</span>
+            <div class="toolbar">
+                <button type="button" class="has-layers" ng-repeat="tagclass in tagclassOptions" ng-click="toggleTagclass(tagclass)" ng-class="{'active': model.value.tagclass.options.indexOf(tagclass) !== -1}">
+                    <umb-icon icon="icon-oew-heading" class="small"></umb-icon>
+                    <span class="icon-layers-text">{{ tagclass[tagclass.length - 1] }}</span>
+                </button>
+            </div>
+        </div>
+
         <div class="toolbar-wrapper" style="clear:both;">
             <span><localize key="headline_default">Default</localize></span>
             <div class="toolbar">
@@ -30,11 +40,21 @@
         </div>
 
         <div class="toolbar-wrapper">
-            <span>&nbsp;</span>
+            <span><localize key="headline_size">Size</localize></span>
             <div class="toolbar">
                 <button type="button" class="has-layers" ng-repeat="size in sizeOptions" ng-click="defaultSize(size)" ng-class="{'active': model.value.size.default === size}">
                     <umb-icon icon="icon-oew-heading" class="small"></umb-icon>
                     <span class="icon-layers-text">{{ size[size.length - 1] }}</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="toolbar-wrapper">
+            <span><localize key="headline_class">Tag Class</localize></span>
+            <div class="toolbar">
+                <button type="button" class="has-layers" ng-repeat="tagclass in tagclassOptions" ng-click="defaultTagclass(tagclass)" ng-class="{'active': model.value.tagclass.default === tagclass}">
+                    <umb-icon icon="icon-oew-heading" class="small"></umb-icon>
+                    <span class="icon-layers-text">{{ tagclass[tagclass.length - 1] }}</span>
                 </button>
             </div>
         </div>

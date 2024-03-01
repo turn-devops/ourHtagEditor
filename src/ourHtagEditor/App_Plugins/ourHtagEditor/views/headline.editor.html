@@ -1,6 +1,6 @@
 ﻿<div ng-controller="Our.Umbraco.HtagEditor.Controller">
     <div class="headline clearfix {{ control.config.css }}">
-        <textarea umb-auto-resize rows="1" class="textstring input-block-level text-{{control.value.textAlign}} {{control.value.hTag}}" localize="placeholder" placeholder="grid_placeholderWriteHere" ng-model="control.value.text"></textarea>
+        <textarea umb-auto-resize rows="1" class="textstring input-block-level text-{{control.value.textAlign}} {{control.value.hTag}} {{control.value.tagclass}}" localize="placeholder" placeholder="grid_placeholderWriteHere" ng-model="control.value.text"></textarea>
 
         <div class="toolbar-wrapper" ng-if="alignOptions.length > 1">
             <span><localize key="headline_position">Position</localize></span>
@@ -21,5 +21,15 @@
             </div>
         </div>
 
+        <div class="toolbar-wrapper">
+            <span><localize key="headline_class">Tag Class</localize></span>
+            <div class="toolbar">
+                <button type="button" class="has-layers" ng-repeat="tagclass in tagclassOptions" ng-click="setTagClass(tagclass)" ng-class="{'active': control.value.tagClass === tagclass}" role="button" aria-label="heading--{{tagclass}}">
+                    <umb-icon icon="icon-oew-heading" class="small"></umb-icon>
+                    <span class="icon-layers-text">{{ tagclass[tagclass.length - 1] }}</span>
+                </button>
+            </div>
+        </div>
+        
     </div>
 </div>

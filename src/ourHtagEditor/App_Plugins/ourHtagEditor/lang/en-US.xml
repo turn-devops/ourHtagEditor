@@ -9,5 +9,6 @@
     <key alias="size">Heading</key>
     <key alias="default">Default</key>
     <key alias="allowed">Allowed</key>
+    <key alias="class">TagClass</key>
   </area>
 </language>

@@ -12,10 +12,11 @@
         config = $scope.control.editor.config;
     }
 
-    function setValue(align, size, text) {
+    function setValue(align, size, tagclass, text) {
         $scope.control.value = {
             "textAlign": align ? align : config.options.align.default,
             "hTag": size ? size : config.options.size.default,
+            "tagClass": tagclass ? tagclass : config.options.tagclass.default,
             "text": text
         };
     }
@@ -25,15 +26,17 @@
         if (!angular.isObject($scope.control.value)) {
             var oldText = $scope.control.value;
             var oldTag = $scope.control.hTag;
+            var oldTagClass = $scope.control.tagClass;
             var oldAlign = $scope.control.textAlign;
 
-            setValue(oldAlign, oldTag, oldText);
+            setValue(oldAlign, oldTag, oldTagClass, oldText);
         }
     } else {
         setValue();
     }
 
-    $scope.sizeOptions = config.options && config.options.size && config.options.size.options ? config.options.size.options : "h1,h2,h3,h4,h5,h6".split(",");
+    $scope.sizeOptions = config.options && config.options.size && config.options.size.options ? config.options.size.options : "h2,h3,h4,h5,h6".split(",");
+    $scope.tagclassOptions = config.options && config.options.tagclass && config.options.tagclass.options ? config.options.tagclass.options : "h1,h2,h3,h5,h6".split(",");
     $scope.alignOptions = config.options && config.options.align && config.options.align.options ? config.options.align.options : "left,center,right".split(",");
 
     //If only one alignment is allowed, set the current alignemt to match the default if they don't already match.
@@ -47,6 +50,10 @@
 
     $scope.setSize = function (hTag) {
         $scope.control.value.hTag = hTag;
+    };
+    
+    $scope.setTagClass = function (hClass) {
+        $scope.control.value.tagClass = hClass;
     };
 
 });
